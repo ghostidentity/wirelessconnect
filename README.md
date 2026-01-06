@@ -105,8 +105,8 @@ wirelessconnect/
 - **Poor range**: Reposition devices for line-of-sight communication and reduce obstacles
 
 
-# Known Issue
-1. The sender app automatically selects the COMPORT associated to lora device connected to windows, unfortunately if the bluetoth is enabled, it fails to select the right one. Thus, you need to disable the bluetooth before you connect.
+## Known Issue
+- The sender app automatically selects the COMPORT associated to lora device connected to windows, unfortunately if the bluetoth is enabled, it fails to select the right one. Thus, you need to disable the bluetooth before you connect.
 
 ## About
 
