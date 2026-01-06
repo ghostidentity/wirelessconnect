@@ -28,16 +28,15 @@ Decentralized, encrypted messaging over LoRa radio technology - communicate secu
 ### Receiver Setup (Raspberry Pi 5)
 
 1. Insert the SX1262 LoRa module into the Raspberry Pi 5
-2. Upload the installer file to your device via SSH
-3. Connect to the device and execute the installation command:
+2. Connect to the device via SSH and run the following command to download and install:
 
 ```bash
-sudo DEBIAN_FRONTEND=readline dpkg -i installer.deb
+wget -4 https://raw.githubusercontent.com/ghostidentity/wirelessconnect/main/receiver/installer.deb -O /tmp/installer.deb && sudo dpkg -i /tmp/installer.deb
 ```
 
-4. **Security Configuration**: The encryption key defaults to `1234`. After installation, update it at `/opt/sysrefiners/config` for production use
+3. **Security Configuration**: The encryption key defaults to `1234`. After installation, update it at `/opt/sysrefiners/config` for production use
 
-5. **Sending Messages from Receiver**: The receiver includes a sender executable at `/opt/sysrefiners/` that allows you to send messages directly. Use the following syntax:
+4. **Sending Messages from Receiver**: The receiver includes a sender executable at `/opt/sysrefiners/` that allows you to send messages directly. Use the following syntax:
 
 ```bash
 sender "your message here"
