@@ -1,0 +1,107 @@
+# WirelessConnect: Secure Long-Range Communication (up to 5 km)
+
+Decentralized, encrypted messaging over LoRa radio technology - communicate securely without internet, cellular networks, or third-party infrastructure.
+
+## Features
+
+- **Decentralized**: No internet or cellular towers required
+- **Secure**: Hardware-level AES-128 encryption for all messages
+- **Reliable**: Built-in acknowledgment (ACK) protocol for message confirmation
+- **Long Range**: Up to 5 km communication distance
+- **Cross-Platform**: Runs on Raspberry Pi 5 (receiver) and Windows/Linux (sender)
+
+## Hardware Requirements
+
+### Receiver
+- Raspberry Pi 5
+- Display monitor
+- SX1262 LoRa module
+
+### Sender
+- Desktop or laptop (Windows/Linux)
+- SX1262 USB-to-LoRa module
+
+**Hardware Reference**: [USB to LoRa Data Transfer Module (SX1262)](https://www.waveshare.com/usb-to-lora.htm)
+
+## Installation Guide
+
+### Receiver Setup (Raspberry Pi 5)
+
+1. Insert the SX1262 LoRa module into the Raspberry Pi 5
+2. Upload the installer file to your device via SSH
+3. Connect to the device and execute the installation command:
+
+```bash
+sudo DEBIAN_FRONTEND=readline dpkg -i installer.deb
+```
+
+4. **Security Configuration**: The encryption key defaults to `1234`. After installation, update it at `/opt/sysrefiners/config` for production use
+
+5. **Sending Messages from Receiver**: The receiver includes a sender executable at `/opt/sysrefiners/` that allows you to send messages directly. Use the following syntax:
+
+```bash
+sender "your message here"
+```
+
+This is useful for testing or sending messages directly from the Raspberry Pi without needing a separate sender device.
+
+### Sender Setup (Windows/Linux)
+
+1. **Connect the LoRa Device**: Plug the SX1262 USB-to-LoRa module into your computer
+2. Locate the appropriate executable in the `sender/` folder for your OS
+3. Copy the `config.xml` file to the same directory as the executable
+4. Run the executable and connect to the LoRa device through the application interface
+5. Once connected, you can start sending messages
+
+## Configuration
+
+Update the `config.xml` file with your preferred settings. The file contains the following structure:
+
+```xml
+<Config>
+    <HistoryPath>history.txt</HistoryPath>
+    <EncryptionKey>1234</EncryptionKey>
+    <Source>device</Source>
+    <AcceptFrom>desktop</AcceptFrom>
+</Config>
+```
+
+**Configuration Parameters:**
+- **HistoryPath**: Path to the file where message history is stored
+- **EncryptionKey**: The key used to encrypt/decrypt messages. Must be identical on sender and receiver. Change from default `1234` to a secure value
+- **Source**: The identifier for this device when sending messages
+- **AcceptFrom**: Specifies which senders this device will accept messages from. Use `ANYONE` to accept from any sender with matching encryption key
+
+```
+wirelessconnect/
+├── README.md
+├── receiver/          # Receiver application for Raspberry Pi
+├── sender/            # Sender applications
+│   ├── windows/       # Windows executable and config
+│   └── linux/         # Linux executable and config
+└── screenshots/       # UI reference images
+```
+
+## Important Notes
+
+- **Frequency**: The LoRa device has been tested to operate on the 433 MHz frequency
+- **Line of Sight**: For optimal range and reliability, position the device with clear line of sight to the receiver
+- **Encryption Key Synchronization**: The encryption key must be identical on both sender and receiver to decrypt messages successfully
+- **Message Filtering**: Use the `<AcceptFrom>` option in `config.xml` to filter incoming messages:
+  - Set to `<AcceptFrom>ANYONE</AcceptFrom>` to accept messages from any sender (provided encryption keys match)
+  - Set to a specific name (e.g., `<AcceptFrom>Mark</AcceptFrom>`) to only accept messages from that sender. The sender's "source" value must match this setting
+- **Screenshots**: Check the `screenshots/` folder for UI reference images
+
+## Troubleshooting
+
+- **Device not detected**: Ensure the LoRa module is properly plugged in and recognized by your OS
+- **Messages not received**: Verify both devices have identical encryption keys
+- **Connection fails**: Check that the sender and receiver `source`/`AcceptFrom` settings match
+- **Poor range**: Reposition devices for line-of-sight communication and reduce obstacles
+
+
+## About
+
+Developed by **Mark Tagab**
+
+*Empowering secure communication through decentralized, open technology.*

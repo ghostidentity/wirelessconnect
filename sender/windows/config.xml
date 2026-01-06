@@ -1,0 +1,6 @@
+<Config>
+    <HistoryPath>history.txt</HistoryPath>
+    <EncryptionKey>1234</EncryptionKey>
+    <Source>desktop</Source>
+    <AcceptFrom>ANYONE</AcceptFrom>
+</Config>
