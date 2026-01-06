@@ -73,7 +73,7 @@ Update the `config.xml` file with your preferred settings. The file contains the
 
 **Configuration Parameters:**
 - **HistoryPath**: Path to the file where message history is stored
-- **EncryptionKey**: The key used to encrypt/decrypt messages. Must be identical on sender and receiver. Change from default `1234` to a secure value
+- **EncryptionKey**: The key used to encrypt/decrypt messages. Must be identical on sender and receiver. Change from default `1234` to a secure value, but ensure its less than 65000
 - **Source**: The identifier for this device when sending messages
 - **AcceptFrom**: Specifies which senders this device will accept messages from. Use `ANYONE` to accept from any sender with matching encryption key
 
