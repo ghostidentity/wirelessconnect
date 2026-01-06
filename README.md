@@ -49,8 +49,14 @@ This is useful for testing or sending messages directly from the Raspberry Pi wi
 1. **Connect the LoRa Device**: Plug the SX1262 USB-to-LoRa module into your computer
 2. Locate the appropriate executable in the `sender/` folder for your OS
 3. Copy the `config.xml` file to the same directory as the executable
-4. Run the executable and connect to the LoRa device through the application interface
-5. Once connected, you can start sending messages
+4. Run the executable and look for the connection status button (initially shows "DISCONNECTED")
+5. Click the status button to connect to the LoRa device. Once connected, it will turn green showing "CONNECTED"
+6. To disconnect, click the green status button again
+
+**Understanding Message Acknowledgement:**
+- When you send a message, the status will show "sent - waiting for acknowledgement"
+- If you receive an acknowledgement (shown as "message acknowledged"), this confirms that the receiver successfully decrypted and received your message
+- No acknowledgement means the message was sent but the receiver either didn't receive it or couldn't decrypt it
 
 ## Configuration
 
