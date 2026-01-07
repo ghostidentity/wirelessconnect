@@ -8,24 +8,26 @@ Decentralized, encrypted messaging over LoRa radio technology - communicate secu
 - **Secure**: Hardware-level AES-128 encryption for all messages
 - **Reliable**: Built-in acknowledgment (ACK) protocol for message confirmation
 - **Long Range**: Up to 5 km communication distance
-- **Cross-Platform**: Runs on Raspberry Pi 5 (receiver) and Windows/Linux (sender)
+- **Cross-Platform**: Runs on Raspberry Pi 5 (optional, for display) and Windows/Linux (sender/receiver)
 
 ## Hardware Requirements
 
-### Receiver
-- Raspberry Pi 5
+### Receiver (Optional - Display Only)
+- Raspberry Pi 5 (optional for displaying received messages on a monitor)
 - Display monitor
 - SX1262 LoRa module
 
-### Sender
+### Sender/Receiver (Required)
 - Desktop or laptop (Windows/Linux)
 - SX1262 USB-to-LoRa module
+
+**Note**: The sender application functions as both a transmitter and receiver. You can send and receive messages directly from your laptop/desktop. A Raspberry Pi 5 is only needed if you want messages displayed on a separate monitor. For point-to-point communication, two laptops with LoRa devices are sufficient—one laptop connected to the LoRa device can use the sender application to communicate with another.
 
 **Hardware Reference**: [USB to LoRa Data Transfer Module (SX1262)](https://www.waveshare.com/usb-to-lora.htm)
 
 ## Installation Guide
 
-### Receiver Setup (Raspberry Pi 5)
+### Receiver Setup (Optional - Raspberry Pi 5 Display)
 
 1. Insert the SX1262 LoRa module into the Raspberry Pi 5
 2. Connect to the device via SSH and run the following command to download and install:
@@ -44,7 +46,7 @@ sender "your message here"
 
 This is useful for testing or sending messages directly from the Raspberry Pi without needing a separate sender device.
 
-### Sender Setup (Windows/Linux)
+### Sender/Receiver Setup (Windows/Linux - Main Communication Device)
 
 1. **Connect the LoRa Device**: Plug the SX1262 USB-to-LoRa module into your computer
 2. Locate the appropriate executable in the `sender/` folder for your OS
@@ -57,6 +59,8 @@ This is useful for testing or sending messages directly from the Raspberry Pi wi
 - When you send a message, the status will show "sent - waiting for acknowledgement"
 - If you receive an acknowledgement (shown as "message acknowledged"), this confirms that the receiver successfully decrypted and received your message
 - No acknowledgement means the message was sent but the receiver either didn't receive it or couldn't decrypt it
+
+**Multi-Laptop Setup**: Two laptops can communicate directly with each other. Simply connect a LoRa device to each laptop and run the sender application on both. Both laptops will send and receive messages simultaneously using the same encryption key.
 
 ## Configuration
 
