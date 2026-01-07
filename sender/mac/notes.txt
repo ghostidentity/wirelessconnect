@@ -1,0 +1,4 @@
+test on macboc air, once downloaded:
+
+chmod +x WirelessConnect
+./WirelessConnect
